@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Copy a reusable prompt that teaches ChatGPT how to publish sandbox projects through a GitHub sandbox-publisher repository.">
+  <meta name="color-scheme" content="dark light">
+  <title>ChatGPT Sandbox Publisher Prompt</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main>
+    <div class="eyebrow">Prompt repository</div>
+    <h1>ChatGPT Sandbox Publisher</h1>
+    <p class="lede">
+      Generate a self-contained prompt that teaches ChatGPT how to stage sandbox output in an existing
+      <code>sandbox-publisher</code> repository, then let GitHub Actions create the destination repository.
+      No token is placed in the prompt.
+    </p>
+
+    <section class="config" aria-label="Prompt configuration">
+      <label>
+        Publisher repository
+        <input id="publisher-repo" value="your-name/sandbox-publisher" autocomplete="off" spellcheck="false">
+      </label>
+      <label>
+        Default target owner
+        <input id="target-owner" value="your-name" autocomplete="off" spellcheck="false">
+      </label>
+      <label>
+        Default visibility
+        <select id="visibility">
+          <option value="private" selected>Private</option>
+          <option value="public">Public</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="prompt-shell">
+      <div class="toolbar">
+        <span class="status" id="status">Loading prompt…</span>
+        <div class="actions">
+          <a class="raw-link" href="./prompt.template.md">Raw template</a>
+          <button id="download" type="button">Download .md</button>
+          <button id="copy" class="primary" type="button">Copy prompt</button>
+        </div>
+      </div>
+      <textarea id="prompt" readonly aria-label="Generated prompt"></textarea>
+    </section>
+
+    <footer>
+      This site only distributes the instruction prompt. The actual repository-creation credentials and workflow
+      belong in the separate publisher repository.
+    </footer>
+  </main>
+  <script src="./app.js"></script>
+</body>
+</html>
